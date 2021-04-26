@@ -5,7 +5,7 @@ function Layout({ title, description, children, className }) {
   return (
     <div>
       <Menu />
-      <div className="bg-light p-5">
+      <div className="bg-light p-5 mb-4">
         <h2>{title}</h2>
         <p className="lead">{description}</p>
       </div>
