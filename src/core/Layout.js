@@ -1,11 +1,12 @@
 import React from "react";
 import Menu from "./Menu";
+import "../styles.css";
 
 function Layout({ title, description, children, className }) {
   return (
     <div>
       <Menu />
-      <div className="bg-light p-5 mb-4">
+      <div className="jumbotron mb-3">
         <h2>{title}</h2>
         <p className="lead">{description}</p>
       </div>
