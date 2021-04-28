@@ -46,7 +46,7 @@ const AddProduct = () => {
     getCategories().then((data) => {
       console.log("Here are the categories,", data);
       if (data.error) {
-        setValues({ ...values, error: data.erro });
+        setValues({ ...values, error: data.error });
       } else {
         setValues({ ...values, categories: data, formData: new FormData() });
       }
