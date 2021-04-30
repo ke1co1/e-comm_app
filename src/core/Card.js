@@ -9,7 +9,7 @@ function Card({ product }) {
         <div className="card-header">{product.name}</div>
         <div className="card-body">
           <ShowImage item={product} url="products" />
-          <p>{product.description}</p>
+          <p>{product.description.substring(0, 50)}</p>
           <p>${product.price}</p>
           <Link to="/">
             <button className="btn btn-outline-primary m-2">

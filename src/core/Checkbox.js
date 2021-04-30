@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function Checkbox({ categories, handleFilters }) {
+const Checkbox = ({ categories, handleFilters }) => {
   const [checked, setChecked] = useState([]);
 
-  //higher order function
-  //takes in the id param from on change then runs our push or splice functions to set the state
   const handleToggle = (c) => () => {
+    // return the first index or -1
     const currentCategoryId = checked.indexOf(c);
     const newCheckedCategoryId = [...checked];
-    //if id is not already checked push it in the state array
+    // if currently checked was not already in checked state > push
+    // else pull/take off
     if (currentCategoryId === -1) {
       newCheckedCategoryId.push(c);
-      //if id is already in the array then remove is
     } else {
       newCheckedCategoryId.splice(currentCategoryId, 1);
     }
-
+    // console.log(newCheckedCategoryId);
     setChecked(newCheckedCategoryId);
-    handleFilters(newCheckedCategoryId); //sends up to parent
+    handleFilters(newCheckedCategoryId);
   };
 
   return categories.map((c, i) => (
     <li key={i} className="list-unstyled">
-      {/* in the input we pass the id back to the HOF */}
       <input
         onChange={handleToggle(c._id)}
-        value={checked.indexOf(c._id)} // might need to add back the === -1
+        value={checked.indexOf(c._id === -1)}
         type="checkbox"
-        className="form-check-input me-2 me-1"
+        className="form-check-input"
       />
       <label className="form-check-label">{c.name}</label>
     </li>
   ));
-}
+};
 
 export default Checkbox;
